@@ -1,2 +1,21 @@
 .forum-navbar {
+ height: fit-content;
+ .header {
+  height: 3rem;
+ }
+ .tabs {
+  //   height: fit-content;
+  height: 3rem;
+  margin-top: 1rem;
+  background-color: $primary-color;
+  .tab {
+   flex-grow: 0;
+   a {
+    color: white;
+   }
+  }
+  .indicator {
+   background-color: $secondary-color;
+  }
+ }
 }

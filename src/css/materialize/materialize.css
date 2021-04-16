@@ -9015,45 +9015,4 @@ input[type=range]::-ms-thumb {
     margin-top: 1.2rem;
   }
 }
-
-.mycontainer {
-  padding: 1rem 1rem;
-}
-
-.forum-navbar {
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-}
-
-.forum-navbar .header {
-  height: 3rem;
-}
-
-.forum-navbar .tabs {
-  height: 3rem;
-  margin-top: 1rem;
-  background-color: #2f2f31;
-}
-
-.forum-navbar .tabs .tab {
-  -webkit-box-flex: 0;
-      -ms-flex-positive: 0;
-          flex-grow: 0;
-}
-
-.forum-navbar .tabs .tab a {
-  color: white;
-}
-
-.forum-navbar .tabs .indicator {
-  background-color: #eb6309;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-/*# sourceMappingURL=Index.css.map */
+/*# sourceMappingURL=materialize.css.map */

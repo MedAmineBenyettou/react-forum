@@ -12,10 +12,14 @@ function Forum(props: any) {
  return (
   <ForumProvider>
    <Router>
-    <div className="Forum">
+    <div className="container">
      <Navbar />
-     <div className="Categories-container">
-      <Category />
+     <div className="Forum">
+      <div className="Categories-container">
+       <Category />
+       <Category />
+       <Category />
+      </div>
      </div>
     </div>
    </Router>
