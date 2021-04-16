@@ -1,0 +1,1 @@
+export const FORUM_LOADING = 'FORUM_LOADING';
