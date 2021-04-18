@@ -1,0 +1,100 @@
+.mycontainer {
+  padding: 1rem 1rem;
+}
+
+.forum-category {
+  border: 1px solid #666666;
+  border-radius: 8px;
+  background-color: #333333;
+  width: 49.5%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 0.5rem 0;
+  margin-top: 10px;
+}
+
+.forum-category .header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 10px;
+}
+
+.forum-category .header .details .title {
+  font-size: larger;
+  font-weight: bold;
+}
+
+.forum-category .header .details .info {
+  font-family: "Noto Sans JP", sans-serif;
+  color: rgba(204, 204, 204, 0.8);
+  font-weight: lighter !important;
+}
+
+.forum-category .header .cat-icon {
+  padding-left: 5px;
+}
+
+.forum-category .header .cat-icon img {
+  height: 46px;
+}
+
+.forum-category .sub-cats {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 8px;
+}
+
+.forum-category .sub-cats .sub-cat {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 5px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.forum-category .sub-cats .sub-cat .sub-cat-title {
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+}
+
+.forum-category .sub-cats .sub-cat img {
+  height: 26px;
+}
+
+@media only screen and (max-width: 600px) {
+  .forum-category {
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=Category.css.map */

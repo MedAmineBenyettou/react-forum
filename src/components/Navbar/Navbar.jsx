@@ -2,6 +2,9 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
 import M from 'materialize-css';
+import '../../css/Navbar/Navbar.css';
+
+const icon = require('../../images/default.png');
 
 export const Navbar = () => {
  var links = [
@@ -26,12 +29,15 @@ export const Navbar = () => {
  return (
   <nav className="forum-navbar nav-wrapper">
    {/* HEADER */}
-   <div className="header col s12">
-    {links.map((l) => (
-     <Link className="breadcrumb" key={l.title} to={l.link}>
-      {l.title}
-     </Link>
-    ))}
+   <div className="header row col s12">
+    <img alt="game-icon" src={icon} />
+    <div className="">
+     {links.map((l) => (
+      <Link className="breadcrumb" key={l.title} to={l.link}>
+       {l.title}
+      </Link>
+     ))}
+    </div>
    </div>
    {/* LINKS */}
    <ul id="forum-tabs" className="tabs col s12">

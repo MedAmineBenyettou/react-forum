@@ -9027,4 +9027,37 @@ input[type=range]::-ms-thumb {
     margin-top: 1.2rem;
   }
 }
-/*# sourceMappingURL=materialize.css.map */
+
+.mycontainer {
+  padding: 1rem 1rem;
+}
+
+.Categories-container {
+  min-height: -webkit-fit-content;
+  min-height: -moz-fit-content;
+  min-height: fit-content;
+  background-color: rgba(47, 47, 49, 0.9);
+  color: #cccccc;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 1rem;
+  padding-bottom: 0.5rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .Categories-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column wrap;
+            flex-flow: column wrap;
+  }
+}
+/*# sourceMappingURL=Categories.css.map */

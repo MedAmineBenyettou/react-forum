@@ -1,0 +1,19 @@
+@import '../materialize/materialize.scss';
+@import '../Common';
+
+.Categories-container {
+ min-height: fit-content;
+ background-color: rgba($color: $primary_color, $alpha: 0.9);
+ color: $mygray4;
+ display: flex;
+ flex-flow: row wrap;
+ justify-content: space-between;
+ padding: 0 1rem;
+ padding-bottom: 0.5rem;
+}
+
+@media only screen and (max-width: $smallWidth) {
+ .Categories-container {
+  flex-flow: column wrap;
+ }
+}

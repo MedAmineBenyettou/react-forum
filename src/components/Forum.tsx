@@ -4,7 +4,7 @@ import { forumData } from '../lib/Forum';
 import { ForumProvider } from '../contexts/forum/ForumContext';
 
 const { Navbar } = require('./Navbar/Navbar');
-const { Category } = require('./Category/Category');
+const { Categories } = require('./Category/Categories');
 
 // function Forum(props:forumData) {
 function Forum(props: any) {
@@ -15,11 +15,7 @@ function Forum(props: any) {
     <div className="container">
      <Navbar />
      <div className="Forum">
-      <div className="Categories-container">
-       <Category />
-       <Category />
-       <Category />
-      </div>
+      <Categories />
      </div>
     </div>
    </Router>

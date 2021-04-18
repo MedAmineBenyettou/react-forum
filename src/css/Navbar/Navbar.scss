@@ -1,0 +1,41 @@
+@import '../materialize/materialize.scss';
+@import '../Common';
+
+.forum-navbar {
+ height: fit-content;
+ $size: 46px;
+ .header {
+  height: 5rem;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  img {
+   max-width: $size !important;
+   margin-right: 10px;
+   margin-left: 5px;
+  }
+ }
+ .tabs {
+  height: 3rem;
+  // margin-top: 1rem;
+  margin-top: 0;
+  background-color: $primary-color;
+  .tab {
+   flex-grow: 0;
+   a,
+   :active {
+    color: $mygray4 !important;
+   }
+  }
+  .indicator {
+   background-color: $secondary-color;
+  }
+ }
+}
+
+@media only screen and (max-width: $smallWidth) {
+ .forum-navbar img {
+  max-height: 24px;
+ }
+}
