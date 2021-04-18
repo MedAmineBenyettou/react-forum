@@ -1,16 +1,22 @@
 import React, { createContext, useReducer, useContext, ReactNode } from 'react';
 import { forumReducer } from './ForumReducer';
-import { FORUM_LOADING } from '../types';
+import { FORUM_LOADING, FORUM_INIT } from '../types';
+import { IforumApiFunctions } from '../../components/Forum';
 
-export type State = {
- loading: boolean;
-}; //type of initialState;
-export type Action = { type: typeof FORUM_LOADING };
+export type Action = {
+ type: typeof FORUM_LOADING | typeof FORUM_INIT;
+ payload?: any;
+};
 type Dispatch = (action: Action) => void;
 type ForumProviderProps = { children: ReactNode };
 
-const initialState: State = { loading: true };
-
+//--------------------------------------    STATE   ---------------------------------
+export type State = {
+ loading: boolean;
+ apiFunctions: IforumApiFunctions;
+};
+const initialState: State = { loading: true, apiFunctions: {} };
+//-----------------------------------------------------------------------------------
 const ForumContext = createContext<
  { state: State; dispatch: Dispatch } | undefined
 >(undefined);
