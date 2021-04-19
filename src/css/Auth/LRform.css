@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;700&display=swap");
 .mycontainer {
   padding: 1rem 1rem;
 }
@@ -9034,40 +9032,50 @@ input[type=range]::-ms-thumb {
   }
 }
 
-.Forum {
-  background-color: rgba(47, 47, 49, 0.9);
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
+.LRform .LRheader h2 {
+  font-weight: bold;
+  margin-bottom: 0;
+  color: #eb6309;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  font-family: "Noto Sans", sans-serif !important;
+.LRform .LRheader p {
+  padding: 10px 0;
+  font-family: "Noto Sans JP", sans-serif !important;
+  font-weight: lighter;
 }
 
-input:not([type]):focus:not([readonly]),
-input[type=text]:not(.browser-default):focus:not([readonly]),
-input[type=password]:not(.browser-default):focus:not([readonly]),
-input[type=email]:not(.browser-default):focus:not([readonly]),
-input[type=url]:not(.browser-default):focus:not([readonly]),
-input[type=time]:not(.browser-default):focus:not([readonly]),
-input[type=date]:not(.browser-default):focus:not([readonly]),
-input[type=datetime]:not(.browser-default):focus:not([readonly]),
-input[type=datetime-local]:not(.browser-default):focus:not([readonly]),
-input[type=tel]:not(.browser-default):focus:not([readonly]),
-input[type=number]:not(.browser-default):focus:not([readonly]),
-input[type=search]:not(.browser-default):focus:not([readonly]),
-textarea.materialize-textarea:focus:not([readonly]) {
-  border-bottom: 1px solid #eb6309 !important;
-  -webkit-box-shadow: 0 1px 0 0 #eb6309 !important;
-          box-shadow: 0 1px 0 0 #eb6309 !important;
+.LRform .input-field {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.35) !important;
+  width: 100% !important;
 }
 
-input:-internal-autofill-selected {
-  background-color: rgba(0, 0, 0, 0) !important;
+.LRform .input-field input {
+  color: white !important;
+  padding-left: 45px !important;
+  width: calc(100% - 45px) !important;
+  margin: 0 !important;
+  background-color: none !important;
+  border: none !important;
+  border-radius: 5px !important;
 }
-/*# sourceMappingURL=Index.css.map */
+
+.LRform .input-field .prefix {
+  padding-left: 5px;
+}
+
+.LRform .btn, .LRform .btn-large, .LRform .btn-small {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  padding: 0 30px !important;
+  min-width: -webkit-max-content !important;
+  min-width: -moz-max-content !important;
+  min-width: max-content !important;
+  text-transform: capitalize;
+  font-weight: bold;
+  border-radius: 8px;
+}
+/*# sourceMappingURL=LRform.css.map */

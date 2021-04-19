@@ -4,6 +4,7 @@ import Forum, { IforumApiFunctions } from './components/Forum';
 
 import './css/materialize/materialize.css';
 import './css/Index.css';
+import './css/animate.css';
 
 const apiFunctions: IforumApiFunctions = {
  //  getAllCategories: f,

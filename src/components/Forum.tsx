@@ -1,10 +1,9 @@
-import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { forumData } from '../lib/Forum';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+// import { forumData } from '../lib/Forum';
 import { ForumProvider } from '../contexts/forum/ForumContext';
-
-const { Navbar } = require('./Navbar/Navbar');
-const { Categories } = require('./Category/Categories');
+import { Navbar } from './Navbar/Navbar';
+import { ForumContainer } from './ForumContainer';
 
 export interface IforumApiFunctions {
  // TODO FIX
@@ -32,18 +31,30 @@ export interface IforumApiFunctions {
 interface IforumProps {
  apiFunctions: IforumApiFunctions;
 }
+export type ICategoriesContainerState = 'ALL' | 'TOP' | 'LATEST' | 'LOGIN';
 
 // function Forum(props:forumData) {
 function Forum(props: IforumProps) {
  const { apiFunctions } = props;
- //  const { views, options, theme } = props;
+ const [
+  categoriesState,
+  setCategoriesState,
+ ] = useState<ICategoriesContainerState>('ALL');
  return (
   <ForumProvider>
    <Router>
     <div className="container">
-     <Navbar />
+     <Navbar setCategoriesState={setCategoriesState} />
      <div className="Forum">
-      <Categories />
+      <Switch>
+       <Route
+        exact
+        path="/"
+        render={(props) => (
+         <ForumContainer {...props} categoriesState={categoriesState} />
+        )}
+       />
+      </Switch>
      </div>
     </div>
    </Router>

@@ -9080,6 +9080,17 @@ input[type=range]::-ms-thumb {
   background-color: #eb6309;
 }
 
+.forum-navbar .tabs .tab.right {
+  border: 1px solid #eb6309;
+  border-bottom: unset;
+  border-right: unset;
+}
+
+.forum-navbar .tabs .tab.right a {
+  color: #eb6309 !important;
+  font-weight: bold;
+}
+
 @media only screen and (max-width: 600px) {
   .forum-navbar img {
     max-height: 24px;

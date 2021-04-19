@@ -1,0 +1,45 @@
+@import '../Common';
+@import '../materialize/materialize.scss';
+
+.LRform {
+ .LRheader {
+  h2 {
+   font-weight: bold;
+   margin-bottom: 0;
+   color: $secondary-color;
+  }
+  p {
+   padding: 10px 0;
+   font-family: $font2 !important;
+   font-weight: lighter;
+  }
+ }
+ .input-field {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+  border: 1px solid $mygray4;
+  border-radius: 5px;
+  background-color: rgba($color: white, $alpha: 0.35) !important;
+  width: 100% !important;
+  input {
+   color: white !important;
+   padding-left: 45px !important;
+   width: calc(100% - 45px) !important;
+   margin: 0 !important;
+   background-color: none !important;
+   border: none !important;
+   border-radius: 5px !important;
+  }
+  .prefix {
+   padding-left: 5px;
+  }
+ }
+ .btn {
+  box-shadow: none !important;
+  padding: 0 30px !important;
+  min-width: max-content !important;
+  text-transform: capitalize;
+  font-weight: bold;
+  border-radius: 8px;
+ }
+}

@@ -1,2 +1,6 @@
+@import './materialize/materialize.scss';
+
 .Forum {
+ background-color: rgba($color: $primary_color, $alpha: 0.9);
+ height: fit-content;
 }

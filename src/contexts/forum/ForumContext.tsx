@@ -14,8 +14,17 @@ type ForumProviderProps = { children: ReactNode };
 export type State = {
  loading: boolean;
  apiFunctions: IforumApiFunctions;
+ user: {
+  isAuthenticated: boolean;
+  id: string | number | undefined;
+  username: string | undefined;
+ };
 };
-const initialState: State = { loading: true, apiFunctions: {} };
+const initialState: State = {
+ loading: true,
+ apiFunctions: {},
+ user: { id: undefined, isAuthenticated: false, username: undefined },
+};
 //-----------------------------------------------------------------------------------
 const ForumContext = createContext<
  { state: State; dispatch: Dispatch } | undefined

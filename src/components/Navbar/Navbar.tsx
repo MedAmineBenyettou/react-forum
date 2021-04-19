@@ -2,11 +2,17 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
 import M from 'materialize-css';
+import { ICategoriesContainerState } from '../Forum';
 import '../../css/Navbar/Navbar.css';
 
 const icon = require('../../images/default.png');
+interface props {
+ setCategoriesState: React.Dispatch<
+  React.SetStateAction<ICategoriesContainerState>
+ >;
+}
 
-export const Navbar = () => {
+export const Navbar: React.FC<props> = ({ setCategoriesState }) => {
  var links = [
   {
    title: 'All Categories',
@@ -41,16 +47,22 @@ export const Navbar = () => {
    </div>
    {/* LINKS */}
    <ul id="forum-tabs" className="tabs col s12">
-    <li className="tab col s1">
+    <li onClick={() => setCategoriesState('ALL')} className="tab col s1">
      <Link className="active" to="/">
-      Categories
+      All Categories
      </Link>
     </li>
-    <li className="tab col s1">
-     <Link to="/top">Top</Link>
+    <li onClick={() => setCategoriesState('TOP')} className="tab col s1">
+     <Link to="/">Top</Link>
     </li>
-    <li className="tab col s1">
-     <Link to="/latest">Latest</Link>
+    <li onClick={() => setCategoriesState('LATEST')} className="tab col s1">
+     <Link to="/">Latest</Link>
+    </li>
+    <li
+     onClick={() => setCategoriesState('LOGIN')}
+     className="tab col s1 right"
+    >
+     <Link to="/">Login </Link>
     </li>
    </ul>
   </nav>

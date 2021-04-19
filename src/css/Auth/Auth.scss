@@ -1,0 +1,27 @@
+@import '../Common';
+@import '../materialize/materialize.scss';
+
+.LRscreen {
+ width: 60%;
+ color: white;
+ .LRform {
+  flex: auto;
+  overflow: hidden;
+  hr {
+   margin-bottom: 5px !important;
+  }
+  span b {
+   cursor: pointer;
+  }
+ }
+
+ .LRfooter {
+  padding: 10px !important;
+  width: 100%;
+  font-size: 0.8em;
+  color: $mygray4;
+  p {
+   text-align: center;
+  }
+ }
+}

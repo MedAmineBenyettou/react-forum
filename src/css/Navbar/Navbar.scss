@@ -31,6 +31,16 @@
   .indicator {
    background-color: $secondary-color;
   }
+  .tab.right {
+   border: 1px solid $secondary-color;
+   border-bottom: unset;
+   border-right: unset;
+
+   a {
+    color: $secondary-color !important;
+    font-weight: bold;
+   }
+  }
  }
 }
 
