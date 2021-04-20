@@ -9034,8 +9034,12 @@ input[type=range]::-ms-thumb {
   }
 }
 
-.Forum {
-  background-color: rgba(47, 47, 49, 0.9);
+.forum-container {
+  background-image: url("../images/background.png");
+  background-repeat: no-repeat;
+}
+
+.forum-container .Forum {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;

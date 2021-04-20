@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ForumProvider } from '../contexts/forum/ForumContext';
 import { Navbar } from './Navbar/Navbar';
 import { ForumContainer } from './ForumContainer';
+import '../css/Forum.css';
 
 export interface IforumApiFunctions {
  // TODO FIX
@@ -40,10 +41,11 @@ function Forum(props: IforumProps) {
   categoriesState,
   setCategoriesState,
  ] = useState<ICategoriesContainerState>('ALL');
+
  return (
   <ForumProvider>
    <Router>
-    <div className="container">
+    <div className="forum-container container">
      <Navbar setCategoriesState={setCategoriesState} />
      <div className="Forum">
       <Switch>

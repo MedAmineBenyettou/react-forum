@@ -1,9 +1,11 @@
 @import '../Common';
+@import '../materialize/materialize.scss';
 
 .forum-category {
  border: 1px solid $mygray2;
  border-radius: 8px;
- background-color: $mygray;
+ background-color: rgba($color: $primary-color, $alpha: 0.65);
+ //  background-color: $mygray;
  width: 49.5%;
  height: fit-content;
  padding: 0.5rem 0;
