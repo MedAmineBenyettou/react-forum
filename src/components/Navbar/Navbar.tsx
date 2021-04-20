@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import $ from 'jquery';
 import M from 'materialize-css';
 import { ICategoriesContainerState } from '../Forum';
+import { useHistory } from 'react-router-dom';
 import '../../css/Navbar/Navbar.css';
 
 const icon = require('../../images/default.png');
@@ -13,6 +14,7 @@ interface props {
 }
 
 export const Navbar: React.FC<props> = ({ setCategoriesState }) => {
+ const history = useHistory();
  var links = [
   {
    title: 'All Categories',
@@ -24,12 +26,13 @@ export const Navbar: React.FC<props> = ({ setCategoriesState }) => {
   },
  ];
 
- const handleChangeTab = () => {};
+ const handleChangeTab = (type: ICategoriesContainerState) => {
+  history.replace('/');
+  setCategoriesState(type);
+ };
 
  useEffect(() => {
-  M.Tabs.init($('#forum-tabs'), {
-   onShow: handleChangeTab,
-  });
+  M.Tabs.init($('#forum-tabs'));
  }, []);
 
  return (
@@ -47,21 +50,18 @@ export const Navbar: React.FC<props> = ({ setCategoriesState }) => {
    </div>
    {/* LINKS */}
    <ul id="forum-tabs" className="tabs col s12">
-    <li onClick={() => setCategoriesState('ALL')} className="tab col s1">
+    <li onClick={() => handleChangeTab('ALL')} className="tab col s1">
      <Link className="active" to="/">
       All Categories
      </Link>
     </li>
-    <li onClick={() => setCategoriesState('TOP')} className="tab col s1">
+    <li onClick={() => handleChangeTab('TOP')} className="tab col s1">
      <Link to="/">Top</Link>
     </li>
-    <li onClick={() => setCategoriesState('LATEST')} className="tab col s1">
+    <li onClick={() => handleChangeTab('LATEST')} className="tab col s1">
      <Link to="/">Latest</Link>
     </li>
-    <li
-     onClick={() => setCategoriesState('LOGIN')}
-     className="tab col s1 right"
-    >
+    <li onClick={() => handleChangeTab('LOGIN')} className="tab col s1 right">
      <Link to="/">Login </Link>
     </li>
    </ul>

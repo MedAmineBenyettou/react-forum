@@ -18,7 +18,7 @@
  }
  .tabs {
   height: 3rem;
-  // margin-top: 1rem;
+  display: block !important;
   margin-top: 0;
   background-color: $primary-color;
   .tab {

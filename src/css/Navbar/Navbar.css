@@ -9061,6 +9061,7 @@ input[type=range]::-ms-thumb {
 
 .forum-navbar .tabs {
   height: 3rem;
+  display: block !important;
   margin-top: 0;
   background-color: #2f2f31;
 }
