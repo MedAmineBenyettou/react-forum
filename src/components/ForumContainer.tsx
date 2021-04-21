@@ -1,7 +1,7 @@
 import React from 'react';
 import { Categories } from './Category/Categories';
 import { Auth } from './Auth/Auth';
-import { ICategoriesContainerState } from './Forum';
+import { ICategoriesContainerState } from './ForumMain';
 
 interface props {
  categoriesState: ICategoriesContainerState;

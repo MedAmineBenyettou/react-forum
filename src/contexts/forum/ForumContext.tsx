@@ -1,13 +1,15 @@
 import React, { createContext, useReducer, useContext, ReactNode } from 'react';
 import { forumReducer } from './ForumReducer';
-import { FORUM_LOADING, FORUM_INIT } from '../types';
-import { IforumApiFunctions } from '../../components/Forum';
+import { TForumActions } from '../types';
+import { IforumApiFunctions } from '../../lib/Forum';
+import { IUser } from '../../lib/User';
+import { ICategory } from '../../lib/Category';
 
 export type Action = {
- type: typeof FORUM_LOADING | typeof FORUM_INIT;
+ type: TForumActions;
  payload?: any;
 };
-type Dispatch = (action: Action) => void;
+export type ForumDispatch = (action: Action) => void;
 type ForumProviderProps = { children: ReactNode };
 
 //--------------------------------------    STATE   ---------------------------------
@@ -16,18 +18,19 @@ export type State = {
  apiFunctions: IforumApiFunctions;
  user: {
   isAuthenticated: boolean;
-  id: string | number | undefined;
-  username: string | undefined;
+  userDetails: IUser | null;
  };
+ categories: ICategory[];
 };
 const initialState: State = {
  loading: true,
  apiFunctions: {},
- user: { id: undefined, isAuthenticated: false, username: undefined },
+ categories: [],
+ user: { isAuthenticated: false, userDetails: null },
 };
 //-----------------------------------------------------------------------------------
 const ForumContext = createContext<
- { state: State; dispatch: Dispatch } | undefined
+ { state: State; dispatch: ForumDispatch } | undefined
 >(undefined);
 
 function ForumProvider({ children }: ForumProviderProps) {
@@ -39,7 +42,7 @@ function ForumProvider({ children }: ForumProviderProps) {
 function useForum() {
  const context = useContext(ForumContext);
  if (context === undefined) {
-  throw new Error('useCount must be used within a CountProvider');
+  throw new Error('useForum must be used within a Forum Provider');
  }
  return context;
 }

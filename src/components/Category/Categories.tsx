@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Category } from './Category';
-import { ICategoriesContainerState } from '../Forum';
+import { ICategoriesContainerState } from '../ForumMain';
+
 import '../../css/Categories/Categories.css';
 
 interface props {

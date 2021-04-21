@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
 import M from 'materialize-css';
-import { ICategoriesContainerState } from '../Forum';
+import { ICategoriesContainerState } from '../ForumMain';
 import { useHistory } from 'react-router-dom';
 import '../../css/Navbar/Navbar.css';
 
