@@ -1,8 +1,7 @@
-import { rest } from 'msw';
-import { act, fireEvent, render, screen } from '@testing-library/react';
+import React from 'react';
 import Forum from '../../components/Forum';
-import { renderHook } from '@testing-library/react-hooks';
-import { initForum } from '../../contexts/forum/Actions/forum';
-import { useForum } from '../../contexts/forum/ForumContext';
+import { mount } from 'enzyme';
 
-test('Initialises the Forum: No api functions', () => {});
+it('Initialises the Forum: No api functions', () => {
+ const wrap = mount(<Forum apiFunctions={{}} />, {});
+});
