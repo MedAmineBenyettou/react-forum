@@ -3,9 +3,16 @@ import person from '../../images/person.png';
 // import { register } from '../../actions/auth';
 import mail from '../../images/mail.png';
 import lock from '../../images/lock.png';
+import { registerUser } from '../../contexts/forum/Actions/auth';
+import { useForum } from '../../contexts/forum/ForumContext';
 // import { setAlert } from '../../actions/alert';
 
 export const Rform: React.FC<{ changeForm: () => void }> = ({ changeForm }) => {
+ const {
+  dispatch,
+  state: { apiFunctions },
+ } = useForum();
+
  const [formData, setData] = useState({
   username: '',
   email: '',
@@ -20,7 +27,7 @@ export const Rform: React.FC<{ changeForm: () => void }> = ({ changeForm }) => {
    if (password === password2) {
     formData.email = formData.email.trim().toLowerCase();
     formData.username = formData.username.trim();
-    // register({ ...formData, ...dateOfBirth });
+    registerUser(dispatch, apiFunctions, formData);
    } else {
     // setAlert('40009', 'danger');
    }

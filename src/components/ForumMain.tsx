@@ -18,7 +18,7 @@ export const ForumMain = (props: IforumProps) => {
 
  useEffect(() => {
   initForum(dispatch, apiFunctions);
- }, [apiFunctions]);
+ }, [apiFunctions, dispatch]);
 
  return (
   <Router>
@@ -30,7 +30,11 @@ export const ForumMain = (props: IforumProps) => {
        exact
        path="/"
        render={(props) => (
-        <ForumContainer {...props} categoriesState={categoriesState} />
+        <ForumContainer
+         {...props}
+         setCategoriesState={setCategoriesState}
+         categoriesState={categoriesState}
+        />
        )}
       />
      </Switch>

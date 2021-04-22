@@ -1,26 +1,30 @@
 import React, { useState } from 'react';
 import mail from '../../images/mail.png';
 import lock from '../../images/lock.png';
-// import { login } from '../../actions/auth';
-// import { setAlert } from '../../actions/alert';
+import { loginUser } from '../../contexts/forum/Actions/auth';
+import { useForum } from '../../contexts/forum/ForumContext';
 
 export const Lform: React.FC<{ changeForm: () => void }> = ({ changeForm }) => {
- const onSubmit = (e: any) => {
+ const {
+  dispatch,
+  state: { apiFunctions },
+ } = useForum();
+
+ const onSubmit = async (e: any) => {
   e.preventDefault();
   if (password.length >= 6) {
-   formData.email = formData.email.trim().toLowerCase();
-   //    login(formData.email, formData.password);
+   var res = await loginUser(dispatch, apiFunctions, formData);
   } else {
    //    setAlert('40008', 'danger');
   }
  };
 
- const [formData, setFormData] = useState({ email: '', password: '' });
+ const [formData, setFormData] = useState({ username: '', password: '' });
 
  const onChange = (e: any) => {
   setFormData({ ...formData, [e.target.name]: e.target.value });
  };
- const { email, password } = formData;
+ const { username, password } = formData;
  return (
   <>
    {/*//! Header */}
@@ -34,10 +38,9 @@ export const Lform: React.FC<{ changeForm: () => void }> = ({ changeForm }) => {
      <div className="row">
       <div className="input-field col s11">
        <input
-        type="email"
-        name="email"
-        placeholder="Email"
-        defaultValue={email}
+        name="username"
+        placeholder="Username"
+        defaultValue={username}
         onChange={onChange}
         required
        />
