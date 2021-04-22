@@ -1,4 +1,5 @@
 import { ICategory } from '../../lib/Category';
+import { ForumActions } from '../types';
 import { Action, State } from './ForumContext';
 
 export function forumReducer(state: State, action: Action): State {
@@ -6,13 +7,13 @@ export function forumReducer(state: State, action: Action): State {
 
  switch (type) {
   //?============    FORUM      ==============================
-  case 'FORUM_LOADING':
+  case ForumActions.FORUM_LOADING:
    return { ...state, loading: true };
-  case 'FORUM_INIT':
+  case ForumActions.FORUM_INIT:
    return { ...state, apiFunctions: payload };
   //?============    AUTH      ==============================
-  case 'USER_LOGIN_SUCCESS':
-  case 'USER_REGISTER_SUCCESS':
+  case ForumActions.USER_LOGIN_SUCCESS:
+  case ForumActions.USER_REGISTER_SUCCESS:
    localStorage.setItem('token', payload.token);
    return {
     ...state,
@@ -24,10 +25,10 @@ export function forumReducer(state: State, action: Action): State {
     },
     loading: false,
    };
-  case 'USER_LOGIN_FAILED':
-  case 'USER_LOGOUT_FAILED':
-  case 'USER_LOGOUT_SUCCESS':
-  case 'USER_REGISTER_FAILED':
+  case ForumActions.USER_LOGIN_FAILED:
+  case ForumActions.USER_LOGOUT_FAILED:
+  case ForumActions.USER_LOGOUT_SUCCESS:
+  case ForumActions.USER_REGISTER_FAILED:
    localStorage.removeItem('token');
    return {
     ...state,
@@ -39,7 +40,7 @@ export function forumReducer(state: State, action: Action): State {
     loading: false,
    };
   //?============    CATEGORIES      ==============================
-  case 'CATEGORIES_FETCH_SUCCESS':
+  case ForumActions.CATEGORIES_FETCH_SUCCESS:
    return {
     ...state,
     categories: [...(payload as ICategory[])],
@@ -47,7 +48,7 @@ export function forumReducer(state: State, action: Action): State {
    };
 
   //?============    CATEGORY      ==============================
-  case 'CATEGORY_FETCH_SUCCESS':
+  case ForumActions.CATEGORY_FETCH_SUCCESS:
    const cat = state.categories.findIndex((c) =>
     c.id.match((payload as ICategory).id)
    );
@@ -59,12 +60,12 @@ export function forumReducer(state: State, action: Action): State {
    };
 
   //?============    FAILS      ==============================
-  case 'CATEGORIES_FETCH_FAILED':
+  case ForumActions.CATEGORIES_FETCH_FAILED:
    return {
     ...state,
     loading: false,
    };
-  case 'CATEGORY_FETCH_FAILED':
+  case ForumActions.CATEGORY_FETCH_FAILED:
    return {
     ...state,
     loading: false,

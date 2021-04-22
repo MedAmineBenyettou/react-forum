@@ -1,5 +1,6 @@
 import { IUserLoginData, IUserRegisterData } from '../../../lib/Auth';
 import { IforumApiFunctions } from '../../../lib/Forum';
+import { ForumActions } from '../../types';
 import { ForumDispatch, useForum } from '../ForumContext';
 
 export async function loginUser(
@@ -11,12 +12,12 @@ export async function loginUser(
   try {
    const user = await apiFunctions.loginUser(userData);
    if (user) {
-    dispatch({ type: 'USER_LOGIN_SUCCESS', payload: user });
+    dispatch({ type: ForumActions.USER_LOGIN_SUCCESS, payload: user });
    } else {
-    dispatch({ type: 'USER_LOGIN_FAILED' });
+    dispatch({ type: ForumActions.USER_LOGIN_FAILED });
    }
   } catch (err) {
-   dispatch({ type: 'USER_LOGIN_FAILED' });
+   dispatch({ type: ForumActions.USER_LOGIN_FAILED });
    throw new Error('Auth error while loging In.\n' + err);
   }
  } else {
@@ -33,9 +34,9 @@ export async function logoutUser(
  if (apiFunctions.logoutUser !== undefined) {
   try {
    await apiFunctions.logoutUser();
-   dispatch({ type: 'USER_LOGOUT_SUCCESS' });
+   dispatch({ type: ForumActions.USER_LOGOUT_SUCCESS });
   } catch (err) {
-   dispatch({ type: 'USER_LOGOUT_FAILED' });
+   dispatch({ type: ForumActions.USER_LOGOUT_FAILED });
    throw new Error('Auth error while loging Out.\n' + err);
   }
  } else {
@@ -54,12 +55,12 @@ export async function registerUser(
   try {
    const user = await apiFunctions.registerUser(registerData);
    if (user) {
-    dispatch({ type: 'USER_REGISTER_SUCCESS', payload: user });
+    dispatch({ type: ForumActions.USER_REGISTER_SUCCESS, payload: user });
    } else {
-    dispatch({ type: 'USER_REGISTER_FAILED' });
+    dispatch({ type: ForumActions.USER_REGISTER_FAILED });
    }
   } catch (err) {
-   dispatch({ type: 'USER_REGISTER_FAILED' });
+   dispatch({ type: ForumActions.USER_REGISTER_FAILED });
    throw new Error('Auth error while registering user.\n' + err);
   }
  } else {

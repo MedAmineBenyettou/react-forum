@@ -1,12 +1,12 @@
 import React, { createContext, useReducer, useContext, ReactNode } from 'react';
 import { forumReducer } from './ForumReducer';
-import { TForumActions } from '../types';
+import { ForumActions } from '../types';
 import { IforumApiFunctions } from '../../lib/Forum';
 import { IUser } from '../../lib/User';
 import { ICategory } from '../../lib/Category';
 
 export type Action = {
- type: TForumActions;
+ type: ForumActions;
  payload?: any;
 };
 export type ForumDispatch = (action: Action) => void;
