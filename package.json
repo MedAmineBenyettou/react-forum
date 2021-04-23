@@ -58,8 +58,7 @@
    "enzyme-to-json/serializer"
   ],
   "collectCoverageFrom": [
-   "src/__tests__/**/*.js",
-   "!src/__tests__/msw/**/*.js"
+   "src/__tests__/**/*.js"
   ],
   "coverageReporters": [
    "text"

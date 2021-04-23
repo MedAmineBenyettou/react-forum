@@ -38,7 +38,7 @@ export const Categories: React.FC<props> = ({ view }) => {
  useEffect(() => {
   handleTabs();
   if (isAuthenticated) getAllCategories(dispatch, apiFunctions);
- }, [view, isAuthenticated]);
+ }, [isAuthenticated]);
 
  return (
   <div className="Categories">
