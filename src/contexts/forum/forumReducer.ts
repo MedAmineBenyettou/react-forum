@@ -1,16 +1,16 @@
 import { ICategory } from '../../lib/Category';
+import { IforumApiFunctions } from '../../lib/Forum';
 import { ForumActions } from '../types';
 import { Action, State } from './ForumContext';
 
 export function forumReducer(state: State, action: Action): State {
  const { type, payload } = action;
-
  switch (type) {
   //?============    FORUM      ==============================
   case ForumActions.FORUM_LOADING:
    return { ...state, loading: true };
   case ForumActions.FORUM_INIT:
-   return { ...state, apiFunctions: payload };
+   return { ...state, apiFunctions: payload as IforumApiFunctions };
   //?============    AUTH      ==============================
   case ForumActions.USER_LOGIN_SUCCESS:
   case ForumActions.USER_REGISTER_SUCCESS:

@@ -12,7 +12,7 @@ export async function loginUser(
   try {
    const user = await apiFunctions.loginUser(userData);
    if (user) {
-    dispatch({ type: ForumActions.USER_LOGIN_SUCCESS, payload: user });
+    dispatch({ type: ForumActions.USER_LOGIN_SUCCESS, payload: { user } });
    } else {
     dispatch({ type: ForumActions.USER_LOGIN_FAILED });
    }
@@ -55,7 +55,7 @@ export async function registerUser(
   try {
    const user = await apiFunctions.registerUser(registerData);
    if (user) {
-    dispatch({ type: ForumActions.USER_REGISTER_SUCCESS, payload: user });
+    dispatch({ type: ForumActions.USER_REGISTER_SUCCESS, payload: { user } });
    } else {
     dispatch({ type: ForumActions.USER_REGISTER_FAILED });
    }

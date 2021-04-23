@@ -5,6 +5,7 @@ import M from 'materialize-css';
 import { ICategoriesContainerState } from '../ForumMain';
 import { useHistory } from 'react-router-dom';
 import '../../css/Navbar/Navbar.css';
+import { useForum } from '../../contexts/forum/ForumContext';
 
 const icon = require('../../images/default.png');
 interface props {
@@ -14,6 +15,11 @@ interface props {
 }
 
 export const Navbar: React.FC<props> = ({ setCategoriesState }) => {
+ const {
+  state: {
+   user: { isAuthenticated },
+  },
+ } = useForum();
  const history = useHistory();
  var links = [
   {
@@ -33,7 +39,7 @@ export const Navbar: React.FC<props> = ({ setCategoriesState }) => {
 
  useEffect(() => {
   M.Tabs.init($('#forum-tabs'));
- }, []);
+ }, [isAuthenticated]);
 
  return (
   <nav className="forum-navbar nav-wrapper">
@@ -50,20 +56,38 @@ export const Navbar: React.FC<props> = ({ setCategoriesState }) => {
    </div>
    {/* LINKS */}
    <ul id="forum-tabs" className="tabs col s12">
-    <li onClick={() => handleChangeTab('ALL')} className="tab col s1">
+    <li
+     id="All_tab"
+     onClick={() => handleChangeTab('ALL')}
+     className="tab col s1"
+    >
      <Link className="active" to="/">
       All Categories
      </Link>
     </li>
-    <li onClick={() => handleChangeTab('TOP')} className="tab col s1">
+    <li
+     id="Top_tab"
+     onClick={() => handleChangeTab('TOP')}
+     className="tab col s1"
+    >
      <Link to="/">Top</Link>
     </li>
-    <li onClick={() => handleChangeTab('LATEST')} className="tab col s1">
+    <li
+     id="Latest_tab"
+     onClick={() => handleChangeTab('LATEST')}
+     className="tab col s1"
+    >
      <Link to="/">Latest</Link>
     </li>
-    <li onClick={() => handleChangeTab('LOGIN')} className="tab col s1 right">
-     <Link to="/">Login </Link>
-    </li>
+    {!isAuthenticated && (
+     <li
+      id="Login_tab"
+      onClick={() => handleChangeTab('LOGIN')}
+      className="tab col s1 right"
+     >
+      <Link to="/">Login</Link>
+     </li>
+    )}
    </ul>
   </nav>
  );
