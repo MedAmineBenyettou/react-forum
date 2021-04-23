@@ -2,9 +2,9 @@ import React from 'react';
 import Forum from '../../components/Forum';
 import { mount } from 'enzyme';
 import '@testing-library/jest-dom/extend-expect';
-import useSWR from 'swr';
 
-require('../../msw/mocks/index');
+const { server } = require('../../msw/mocks/server');
+server.listen();
 
 /**@type import('../../lib/Forum').IforumApiFunctions */
 const apiFunctions = {

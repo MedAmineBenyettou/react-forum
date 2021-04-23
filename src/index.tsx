@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Forum from './components/Forum';
-import { testApiFunctions } from './__tests__/testApiFunctions';
+import { testApiFunctions } from './__test_variables__/testApiFunctions';
 
 import './css/materialize/materialize.css';
 import './css/Index.css';
