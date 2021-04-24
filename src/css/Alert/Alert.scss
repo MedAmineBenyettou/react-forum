@@ -1,0 +1,48 @@
+@import '../materialize/materialize.scss';
+@import '../Common';
+
+.alert-container {
+ z-index: 999;
+ position: fixed;
+ width: 50%;
+ left: auto;
+ right: auto;
+ margin: 10px 0 0 10px;
+ .alert {
+  padding: 0.8rem;
+  margin-bottom: 0.3rem;
+  opacity: 0.9;
+  //   background-color: $secondaryC; /*COLOR 1 */
+  font-size: 1rem;
+  letter-spacing: 0.05rem;
+  border-radius: 8px;
+
+  // &-enter {
+  //     opacity: 0;
+  //     &-enter-active {
+  //       opacity: 1;
+  //       transition: opacity 500ms ease-in;
+  //     }
+  //   }
+  //      &-exit {
+  //         opacity: 1;
+  //         &-active {
+  //             opacity: 0;
+  //             transition: opacity 500ms ease-in;
+  //           }
+  //       }
+
+  &-danger {
+   background-color: $danger-color;
+  }
+  &-success {
+   background-color: $success-color;
+  }
+  &-warning {
+   background-color: $warning-color;
+  }
+  &-info {
+   background-color: $info-color;
+  }
+ }
+}

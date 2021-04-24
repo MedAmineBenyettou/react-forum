@@ -24,8 +24,9 @@
   "react-dom": "^16.13.1",
   "react-router-dom": "^5.2.0",
   "react-scripts": "3.4.3",
+  "react-transition-group": "^4.4.1",
   "typescript": "~3.7.2",
-  "uuid": "^8.3.1"
+  "uuid": "^8.3.2"
  },
  "scripts": {
   "start": "react-scripts start",
@@ -49,6 +50,7 @@
   ]
  },
  "devDependencies": {
+  "@types/react-transition-group": "^4.4.1",
   "enzyme": "^3.11.0",
   "enzyme-adapter-react-16": "^1.15.6",
   "enzyme-to-json": "^3.6.2"

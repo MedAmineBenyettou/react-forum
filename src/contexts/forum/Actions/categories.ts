@@ -1,5 +1,5 @@
 import { IforumApiFunctions } from '../../../lib/Forum';
-import { ForumActions } from '../../types';
+import { ForumActionsTypes } from '../../types';
 import { ForumDispatch } from '../ForumContext';
 
 export async function getAllCategories(
@@ -10,9 +10,12 @@ export async function getAllCategories(
   try {
    const cats = await apiFunctions.getAllCategories();
    if (cats)
-    dispatch({ type: ForumActions.CATEGORIES_FETCH_SUCCESS, payload: cats });
+    dispatch({
+     type: ForumActionsTypes.CATEGORIES_FETCH_SUCCESS,
+     payload: cats,
+    });
   } catch (err) {
-   dispatch({ type: ForumActions.CATEGORIES_FETCH_FAILED });
+   dispatch({ type: ForumActionsTypes.CATEGORIES_FETCH_FAILED });
    throw new Error('Auth Error while loging In.\n' + err);
   }
  } else {
@@ -31,9 +34,9 @@ export async function getCategory(
   try {
    const cat = await apiFunctions.getCategory(id);
    if (cat)
-    dispatch({ type: ForumActions.CATEGORY_FETCH_SUCCESS, payload: cat });
+    dispatch({ type: ForumActionsTypes.CATEGORY_FETCH_SUCCESS, payload: cat });
   } catch (err) {
-   dispatch({ type: ForumActions.CATEGORY_FETCH_FAILED });
+   dispatch({ type: ForumActionsTypes.CATEGORY_FETCH_FAILED });
    throw new Error(
     'Error while getting the category with the id: ' + id + '.\n' + err
    );

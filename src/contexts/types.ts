@@ -1,4 +1,4 @@
-export enum ForumActions {
+export enum ForumActionsTypes {
  FORUM_LOADING = 'FORUM_LOADING',
  FORUM_INIT = 'FORUM_INIT',
  //  ----------------------------------------------- AUTH
@@ -16,4 +16,9 @@ export enum ForumActions {
  CATEGORY_FETCH_SUCCESS = 'CATEGORY_FETCH_SUCCESS',
  CATEGORY_FETCH_FAILED = 'CATEGORY_FETCH_FAILED',
  //  -----------------------------------------------
+}
+
+export enum AlertActionsTypes {
+ SET_ALERT = 'SET_ALERT',
+ REMOVE_ALERT = 'REMOVE_ALERT',
 }

@@ -4,7 +4,6 @@ import { Auth } from './Auth/Auth';
 import { ICategoriesContainerState } from './ForumMain';
 import { useHistory } from 'react-router-dom';
 import { useForum } from '../contexts/forum/ForumContext';
-import $ from 'jquery';
 import M from 'materialize-css';
 
 interface props {

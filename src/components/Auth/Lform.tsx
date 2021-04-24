@@ -13,7 +13,7 @@ export const Lform: React.FC<{ changeForm: () => void }> = ({ changeForm }) => {
  const onSubmit = async (e: any) => {
   e.preventDefault();
   if (password.length >= 6) {
-   var res = await loginUser(dispatch, apiFunctions, formData);
+   await loginUser(dispatch, apiFunctions, formData);
   } else {
    //    setAlert('40008', 'danger');
   }

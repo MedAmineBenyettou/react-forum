@@ -6243,7 +6243,7 @@ input[type=tel]:not(.browser-default):focus.valid ~ label,
 input[type=number]:not(.browser-default):focus.valid ~ label,
 input[type=search]:not(.browser-default):focus.valid ~ label,
 textarea.materialize-textarea:focus.valid ~ label {
-  color: #4CAF50;
+  color: #8bc34a;
 }
 
 input:not([type]):focus.invalid ~ label,
@@ -6304,9 +6304,9 @@ input.valid[type=search]:not(.browser-default),
 input.valid[type=search]:not(.browser-default):focus,
 textarea.materialize-textarea.valid,
 textarea.materialize-textarea.valid:focus, .select-wrapper.valid > input.select-dropdown {
-  border-bottom: 1px solid #4CAF50;
-  -webkit-box-shadow: 0 1px 0 0 #4CAF50;
-          box-shadow: 0 1px 0 0 #4CAF50;
+  border-bottom: 1px solid #8bc34a;
+  -webkit-box-shadow: 0 1px 0 0 #8bc34a;
+          box-shadow: 0 1px 0 0 #8bc34a;
 }
 
 input.invalid:not([type]), input.invalid:not([type]):focus,
@@ -6428,7 +6428,7 @@ input[type=search]:not(.browser-default):focus.valid ~ .helper-text:after,
 textarea.materialize-textarea.valid ~ .helper-text:after,
 textarea.materialize-textarea:focus.valid ~ .helper-text:after, .select-wrapper.valid ~ .helper-text:after {
   content: attr(data-success);
-  color: #4CAF50;
+  color: #8bc34a;
 }
 
 input:not([type]).invalid ~ .helper-text:after,

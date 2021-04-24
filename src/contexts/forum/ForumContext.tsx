@@ -1,19 +1,19 @@
 import React, { createContext, useReducer, useContext, ReactNode } from 'react';
 import { forumReducer } from './ForumReducer';
-import { ForumActions } from '../types';
+import { ForumActionsTypes } from '../types';
 import { IforumApiFunctions } from '../../lib/Forum';
 import { IUser } from '../../lib/User';
 import { ICategory } from '../../lib/Category';
 
-export type Action = {
- type: ForumActions;
+export type ForumAction = {
+ type: ForumActionsTypes;
  payload?: any;
 };
-export type ForumDispatch = (action: Action) => void;
+export type ForumDispatch = (action: ForumAction) => void;
 type ForumProviderProps = { children: ReactNode };
 
 //--------------------------------------    STATE   ---------------------------------
-export type State = {
+export type ForumState = {
  loading: boolean;
  apiFunctions: IforumApiFunctions;
  user: {
@@ -22,7 +22,7 @@ export type State = {
  };
  categories: ICategory[];
 };
-const initialState: State = {
+const initialState: ForumState = {
  loading: true,
  apiFunctions: {},
  categories: [],
@@ -30,7 +30,7 @@ const initialState: State = {
 };
 //-----------------------------------------------------------------------------------
 const ForumContext = createContext<
- { state: State; dispatch: ForumDispatch } | undefined
+ { state: ForumState; dispatch: ForumDispatch } | undefined
 >(undefined);
 
 function ForumProvider({ children }: ForumProviderProps) {

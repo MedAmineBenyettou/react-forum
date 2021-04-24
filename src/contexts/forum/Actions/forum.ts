@@ -1,14 +1,14 @@
 import { ForumDispatch } from '../ForumContext';
 import { IforumApiFunctions } from '../../../lib/Forum';
-import { ForumActions } from '../../types';
+import { ForumActionsTypes } from '../../types';
 
 export function loadingForum(dispatch: ForumDispatch) {
- dispatch({ type: ForumActions.FORUM_LOADING });
+ dispatch({ type: ForumActionsTypes.FORUM_LOADING });
 }
 
 export function initForum(
  dispatch: ForumDispatch,
  apiFunctions: IforumApiFunctions
 ) {
- dispatch({ type: ForumActions.FORUM_INIT, payload: apiFunctions });
+ dispatch({ type: ForumActionsTypes.FORUM_INIT, payload: apiFunctions });
 }
