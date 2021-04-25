@@ -3,6 +3,8 @@ import mail from '../../images/mail.png';
 import lock from '../../images/lock.png';
 import { loginUser } from '../../contexts/forum/Actions/auth';
 import { useForum } from '../../contexts/forum/ForumContext';
+import { AlertType, useAlert } from '../../contexts/Alert/AlertContext';
+import { setAlert } from '../../contexts/Alert/Actions/alertActions';
 
 export const Lform: React.FC<{ changeForm: () => void }> = ({ changeForm }) => {
  const {
@@ -10,12 +12,23 @@ export const Lform: React.FC<{ changeForm: () => void }> = ({ changeForm }) => {
   state: { apiFunctions },
  } = useForum();
 
+ const { dispatchAlert } = useAlert();
+
  const onSubmit = async (e: any) => {
   e.preventDefault();
   if (password.length >= 6) {
-   await loginUser(dispatch, apiFunctions, formData);
+   await loginUser({ dispatch, apiFunctions }, formData);
+   setAlert({
+    dispatchAlert,
+    msg: 'Login was successful!',
+    alertType: AlertType.SUCCESS,
+   });
   } else {
-   //    setAlert('40008', 'danger');
+   setAlert({
+    dispatchAlert,
+    msg: 'Login failed',
+    alertType: AlertType.DANGER,
+   });
   }
  };
 

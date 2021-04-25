@@ -4,7 +4,7 @@ import { AlertReducer } from './AlertReducer';
 
 export type AlertAction = {
  type: AlertActionsTypes;
- payload?: any;
+ payload?: AlertState | string;
 };
 export type AlertDispatch = (action: AlertAction) => void;
 type AlertProviderProps = { children: ReactNode };
@@ -22,12 +22,12 @@ export type AlertState = { msg: string; alertType: AlertType; id: string };
 const initialState: AlertState[] = [];
 //-----------------------------------------------------------------------------------
 const AlertContext = createContext<
- { state: AlertState[]; dispatch: AlertDispatch } | undefined
+ { state: AlertState[]; dispatchAlert: AlertDispatch } | undefined
 >(undefined);
 
 function AlertProvider({ children }: AlertProviderProps) {
- const [state, dispatch] = useReducer(AlertReducer, initialState);
- const value = { state, dispatch };
+ const [state, dispatchAlert] = useReducer(AlertReducer, initialState);
+ const value = { state, dispatchAlert };
  return <AlertContext.Provider value={value}>{children}</AlertContext.Provider>;
 }
 

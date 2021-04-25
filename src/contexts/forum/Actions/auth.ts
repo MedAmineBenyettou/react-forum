@@ -1,11 +1,11 @@
 import { IUserLoginData, IUserRegisterData } from '../../../lib/Auth';
 import { IforumApiFunctions } from '../../../lib/Forum';
 import { ForumActionsTypes } from '../../types';
+import { IUseForum } from '../../_common';
 import { ForumDispatch } from '../ForumContext';
 
 export async function loginUser(
- dispatch: ForumDispatch,
- apiFunctions: IforumApiFunctions,
+ { dispatch, apiFunctions }: IUseForum,
  userData: IUserLoginData
 ) {
  if (apiFunctions.loginUser !== undefined) {
@@ -27,10 +27,7 @@ export async function loginUser(
  }
 }
 
-export async function logoutUser(
- dispatch: ForumDispatch,
- apiFunctions: IforumApiFunctions
-) {
+export async function logoutUser({ dispatch, apiFunctions }: IUseForum) {
  if (apiFunctions.logoutUser !== undefined) {
   try {
    await apiFunctions.logoutUser();
@@ -47,8 +44,10 @@ export async function logoutUser(
 }
 
 export async function registerUser(
- dispatch: ForumDispatch,
- apiFunctions: IforumApiFunctions,
+ {
+  dispatch,
+  apiFunctions,
+ }: { dispatch: ForumDispatch; apiFunctions: IforumApiFunctions },
  registerData: IUserRegisterData
 ) {
  if (apiFunctions.registerUser !== undefined) {

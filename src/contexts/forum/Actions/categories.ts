@@ -1,11 +1,7 @@
-import { IforumApiFunctions } from '../../../lib/Forum';
 import { ForumActionsTypes } from '../../types';
-import { ForumDispatch } from '../ForumContext';
+import { IUseForum } from '../../_common';
 
-export async function getAllCategories(
- dispatch: ForumDispatch,
- apiFunctions: IforumApiFunctions
-) {
+export async function getAllCategories({ dispatch, apiFunctions }: IUseForum) {
  if (apiFunctions.getAllCategories !== undefined) {
   try {
    const cats = await apiFunctions.getAllCategories();
@@ -26,8 +22,7 @@ export async function getAllCategories(
 }
 
 export async function getCategory(
- dispatch: ForumDispatch,
- apiFunctions: IforumApiFunctions,
+ { dispatch, apiFunctions }: IUseForum,
  id: string
 ) {
  if (apiFunctions.getCategory !== undefined) {

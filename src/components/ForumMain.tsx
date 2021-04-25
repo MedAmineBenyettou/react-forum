@@ -17,7 +17,7 @@ export const ForumMain = (props: IforumProps) => {
  ] = useState<ICategoriesContainerState>('ALL');
 
  useEffect(() => {
-  initForum(dispatch, apiFunctions);
+  initForum({ dispatch, apiFunctions });
  }, [apiFunctions, dispatch]);
 
  return (

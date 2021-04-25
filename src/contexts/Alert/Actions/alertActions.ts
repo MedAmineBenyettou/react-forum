@@ -1,19 +1,15 @@
-import { AlertDispatch, AlertState, AlertType } from '../AlertContext';
-import uuid from 'uuid';
+import * as uuid from 'uuid';
 import { AlertActionsTypes } from '../../types';
-export const setAlert = (
- dispatch: AlertDispatch,
- msg: string,
- alertType: AlertType
-) => {
+import { IUseAlert } from '../../_common';
+export const setAlert = ({ dispatchAlert, msg, alertType }: IUseAlert) => {
  const id = uuid.v4();
- dispatch({
+ dispatchAlert({
   type: AlertActionsTypes.SET_ALERT,
   payload: { msg, alertType, id },
  });
 
  setTimeout(
-  () => dispatch({ type: AlertActionsTypes.REMOVE_ALERT, payload: id }),
+  () => dispatchAlert({ type: AlertActionsTypes.REMOVE_ALERT, payload: id }),
   5000
  );
 };

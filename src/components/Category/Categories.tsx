@@ -20,25 +20,23 @@ export const Categories: React.FC<props> = ({ view }) => {
   },
  } = useForum();
 
- function handleTabs() {
-  switch (view) {
-   case 'ALL':
-    break;
-   case 'LATEST':
-    break;
-   case 'TOP':
-    break;
-   case 'LOGIN':
-    break;
-   default:
-    throw new Error("Couldn't handle the view: " + view);
-  }
- }
-
  useEffect(() => {
-  handleTabs();
-  if (isAuthenticated) getAllCategories(dispatch, apiFunctions);
- }, [isAuthenticated]);
+  const handleTabs = () => {
+   switch (view) {
+    case 'ALL':
+     break;
+    case 'LATEST':
+     break;
+    case 'TOP':
+     break;
+    case 'LOGIN':
+     break;
+    default:
+     throw new Error("Couldn't handle the view: " + view);
+   }
+  };
+  if (isAuthenticated) getAllCategories({ dispatch, apiFunctions });
+ }, [isAuthenticated, apiFunctions, dispatch]);
 
  return (
   <div className="Categories">

@@ -27,7 +27,7 @@ export const Rform: React.FC<{ changeForm: () => void }> = ({ changeForm }) => {
    if (password === password2) {
     formData.email = formData.email.trim().toLowerCase();
     formData.username = formData.username.trim();
-    registerUser(dispatch, apiFunctions, formData);
+    registerUser({ dispatch, apiFunctions }, formData);
    } else {
     // setAlert('40009', 'danger');
    }

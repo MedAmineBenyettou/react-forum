@@ -1,6 +1,27 @@
 @import '../materialize/materialize.scss';
 @import '../Common';
 
+.alert-transition {
+ $timeout: 300ms;
+ &-enter {
+  opacity: 0;
+  transform: scale(0.9);
+  &-active {
+   opacity: 1;
+   transform: translateX(0);
+   transition: opacity $timeout, transform $timeout;
+  }
+ }
+ &-exit {
+  opacity: 1;
+  &-active {
+   opacity: 0;
+   transform: scale(0.9);
+   transition: opacity $timeout, transform $timeout;
+  }
+ }
+}
+
 .alert-container {
  z-index: 999;
  position: fixed;
@@ -12,25 +33,9 @@
   padding: 0.8rem;
   margin-bottom: 0.3rem;
   opacity: 0.9;
-  //   background-color: $secondaryC; /*COLOR 1 */
   font-size: 1rem;
   letter-spacing: 0.05rem;
   border-radius: 8px;
-
-  // &-enter {
-  //     opacity: 0;
-  //     &-enter-active {
-  //       opacity: 1;
-  //       transition: opacity 500ms ease-in;
-  //     }
-  //   }
-  //      &-exit {
-  //         opacity: 1;
-  //         &-active {
-  //             opacity: 0;
-  //             transition: opacity 500ms ease-in;
-  //           }
-  //       }
 
   &-danger {
    background-color: $danger-color;
