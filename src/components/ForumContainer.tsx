@@ -1,33 +1,25 @@
 import React, { useEffect } from 'react';
 import { Categories } from './Category/Categories';
 import { Auth } from './Auth/Auth';
-import { ICategoriesContainerState } from './ForumMain';
-import { useHistory } from 'react-router-dom';
-import { useForum } from '../contexts/forum/ForumContext';
+import {
+ ICategoriesContainerState,
+ useForum,
+} from '../contexts/forum/ForumContext';
+import { setCategoriesState } from '../contexts/forum/Actions/forum';
 import M from 'materialize-css';
 
-interface props {
- categoriesState: ICategoriesContainerState;
- setCategoriesState: React.Dispatch<
-  React.SetStateAction<ICategoriesContainerState>
- >;
-}
-
-export const ForumContainer: React.FC<props> = ({
- categoriesState,
- setCategoriesState,
-}) => {
- const history = useHistory();
+export const ForumContainer = () => {
  const {
   state: {
    user: { isAuthenticated },
+   categoriesContainerState,
   },
+  dispatch,
  } = useForum();
 
  useEffect(() => {
   if (isAuthenticated) {
-   history.replace('/');
-   setCategoriesState('ALL');
+   setCategoriesState({ dispatch }, ICategoriesContainerState.ALL);
    var el = document.getElementById('forum-tabs');
    if (el) {
     var inst = M.Tabs.getInstance(el);
@@ -35,16 +27,16 @@ export const ForumContainer: React.FC<props> = ({
     inst.updateTabIndicator();
    }
   }
- }, [isAuthenticated]);
+ }, [isAuthenticated, setCategoriesState, dispatch]);
 
- switch (categoriesState) {
+ switch (categoriesContainerState) {
   case 'ALL':
   case 'LATEST':
   case 'TOP':
-   return <Categories view={categoriesState} />;
+   return <Categories />;
   case 'LOGIN':
    return <Auth />;
   default:
-   throw new Error("Couldn't handle the view: " + categoriesState);
+   throw new Error("Couldn't handle the view: " + categoriesContainerState);
  }
 };

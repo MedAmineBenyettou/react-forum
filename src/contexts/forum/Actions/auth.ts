@@ -8,11 +8,14 @@ export async function loginUser(
  { dispatch, apiFunctions }: IUseForum,
  userData: IUserLoginData
 ) {
- if (apiFunctions.loginUser !== undefined) {
+ if (apiFunctions.loginUser !== undefined && dispatch) {
   try {
-   const user = await apiFunctions.loginUser(userData);
+   const { user, token } = await apiFunctions.loginUser(userData);
    if (user) {
-    dispatch({ type: ForumActionsTypes.USER_LOGIN_SUCCESS, payload: { user } });
+    dispatch({
+     type: ForumActionsTypes.USER_LOGIN_SUCCESS,
+     payload: { user, token },
+    });
    } else {
     dispatch({ type: ForumActionsTypes.USER_LOGIN_FAILED });
    }
@@ -28,7 +31,7 @@ export async function loginUser(
 }
 
 export async function logoutUser({ dispatch, apiFunctions }: IUseForum) {
- if (apiFunctions.logoutUser !== undefined) {
+ if (apiFunctions.logoutUser !== undefined && dispatch) {
   try {
    await apiFunctions.logoutUser();
    dispatch({ type: ForumActionsTypes.USER_LOGOUT_SUCCESS });
@@ -52,11 +55,11 @@ export async function registerUser(
 ) {
  if (apiFunctions.registerUser !== undefined) {
   try {
-   const user = await apiFunctions.registerUser(registerData);
+   const { user, token } = await apiFunctions.registerUser(registerData);
    if (user) {
     dispatch({
      type: ForumActionsTypes.USER_REGISTER_SUCCESS,
-     payload: { user },
+     payload: { user, token },
     });
    } else {
     dispatch({ type: ForumActionsTypes.USER_REGISTER_FAILED });

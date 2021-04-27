@@ -6,14 +6,17 @@ import { Alert } from './Alert/Alert';
 import { AlertProvider } from '../contexts/Alert/AlertContext';
 
 import '../css/Forum.css';
+import { CategoriesProvider } from '../contexts/Categories/CategoriesContext';
 
 function Forum(props: IforumProps) {
  return (
   <ForumProvider>
-   <AlertProvider>
-    <Alert />
-    <ForumMain {...props} />
-   </AlertProvider>
+   <CategoriesProvider>
+    <AlertProvider>
+     <Alert />
+     <ForumMain {...props} />
+    </AlertProvider>
+   </CategoriesProvider>
   </ForumProvider>
  );
 }

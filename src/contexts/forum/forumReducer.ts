@@ -1,4 +1,3 @@
-import { ICategory } from '../../lib/Category';
 import { IforumApiFunctions } from '../../lib/Forum';
 import { ForumActionsTypes } from '../types';
 import { ForumAction, ForumState } from './ForumContext';
@@ -13,13 +12,22 @@ export function forumReducer(
   case ForumActionsTypes.FORUM_LOADING:
    return { ...state, loading: true };
   case ForumActionsTypes.FORUM_INIT:
-   return { ...state, apiFunctions: payload as IforumApiFunctions };
+   return {
+    ...state,
+    apiFunctions: payload as IforumApiFunctions,
+   };
+  case ForumActionsTypes.FORUM_CATEGORIES_STATE_CHANGE:
+   return {
+    ...state,
+    categoriesContainerState: payload,
+   };
   //?============    AUTH      ==============================
   case ForumActionsTypes.USER_LOGIN_SUCCESS:
   case ForumActionsTypes.USER_REGISTER_SUCCESS:
-   localStorage.setItem('token', payload.token);
+   localStorage.setItem('forumToken', payload.token);
    return {
     ...state,
+    error: null,
     user: {
      isAuthenticated: true,
      userDetails: {
@@ -32,50 +40,19 @@ export function forumReducer(
   case ForumActionsTypes.USER_LOGOUT_FAILED:
   case ForumActionsTypes.USER_LOGOUT_SUCCESS:
   case ForumActionsTypes.USER_REGISTER_FAILED:
-   localStorage.removeItem('token');
+   localStorage.removeItem('forumToken');
    return {
     ...state,
+    error: payload,
     user: {
      isAuthenticated: false,
      userDetails: null,
     },
-    categories: [],
-    loading: false,
-   };
-  //?============    CATEGORIES      ==============================
-  case ForumActionsTypes.CATEGORIES_FETCH_SUCCESS:
-   return {
-    ...state,
-    categories: [...(payload as ICategory[])],
-    loading: false,
-   };
-
-  //?============    CATEGORY      ==============================
-  case ForumActionsTypes.CATEGORY_FETCH_SUCCESS:
-   const cat = state.categories.findIndex((c) =>
-    c.id.match((payload as ICategory).id)
-   );
-   if (cat >= 0) state.categories[cat] = payload as ICategory;
-   else state.categories.push(payload);
-   return {
-    ...state,
-    loading: false,
-   };
-
-  //?============    FAILS      ==============================
-  case ForumActionsTypes.CATEGORIES_FETCH_FAILED:
-   return {
-    ...state,
-    loading: false,
-   };
-  case ForumActionsTypes.CATEGORY_FETCH_FAILED:
-   return {
-    ...state,
     loading: false,
    };
   //?============    END      ==============================
   default: {
-   throw new Error(`Unhandled action type: ${type}`);
+   throw new Error(`Unhandled forum action type: ${type}`);
   }
  }
 }

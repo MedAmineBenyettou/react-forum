@@ -2,23 +2,22 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
 import M from 'materialize-css';
-import { ICategoriesContainerState } from '../ForumMain';
 import { useHistory } from 'react-router-dom';
 import '../../css/Navbar/Navbar.css';
-import { useForum } from '../../contexts/forum/ForumContext';
+import {
+ ICategoriesContainerState,
+ useForum,
+} from '../../contexts/forum/ForumContext';
+import { setCategoriesState } from '../../contexts/forum/Actions/forum';
 
 const icon = require('../../images/default.png');
-interface props {
- setCategoriesState: React.Dispatch<
-  React.SetStateAction<ICategoriesContainerState>
- >;
-}
 
-export const Navbar: React.FC<props> = ({ setCategoriesState }) => {
+export const Navbar = () => {
  const {
   state: {
    user: { isAuthenticated },
   },
+  dispatch,
  } = useForum();
  const history = useHistory();
  var links = [
@@ -34,7 +33,7 @@ export const Navbar: React.FC<props> = ({ setCategoriesState }) => {
 
  const handleChangeTab = (type: ICategoriesContainerState) => {
   history.replace('/');
-  setCategoriesState(type);
+  setCategoriesState({ dispatch }, type);
  };
 
  useEffect(() => {
@@ -58,7 +57,7 @@ export const Navbar: React.FC<props> = ({ setCategoriesState }) => {
    <ul id="forum-tabs" className="tabs col s12">
     <li
      id="All_tab"
-     onClick={() => handleChangeTab('ALL')}
+     onClick={() => handleChangeTab(ICategoriesContainerState.ALL)}
      className="tab col s1"
     >
      <Link className="active" to="/">
@@ -67,14 +66,14 @@ export const Navbar: React.FC<props> = ({ setCategoriesState }) => {
     </li>
     <li
      id="Top_tab"
-     onClick={() => handleChangeTab('TOP')}
+     onClick={() => handleChangeTab(ICategoriesContainerState.TOP)}
      className="tab col s1"
     >
      <Link to="/">Top</Link>
     </li>
     <li
      id="Latest_tab"
-     onClick={() => handleChangeTab('LATEST')}
+     onClick={() => handleChangeTab(ICategoriesContainerState.LATEST)}
      className="tab col s1"
     >
      <Link to="/">Latest</Link>
@@ -82,7 +81,7 @@ export const Navbar: React.FC<props> = ({ setCategoriesState }) => {
     {!isAuthenticated && (
      <li
       id="Login_tab"
-      onClick={() => handleChangeTab('LOGIN')}
+      onClick={() => handleChangeTab(ICategoriesContainerState.LOGIN)}
       className="tab col s1 right"
      >
       <Link to="/">Login</Link>

@@ -9,16 +9,22 @@ export enum ForumActionsTypes {
 
  USER_REGISTER_SUCCESS = 'USER_REGISTER_SUCCESS',
  USER_REGISTER_FAILED = 'USER_REGISTER_FAILED',
+ //  -----------------------------------------------
+ FORUM_CATEGORIES_STATE_CHANGE = 'FORUM_CATEGORIES_STATE_CHANGE',
+}
+
+export enum AlertActionsTypes {
+ SET_ALERT = 'SET_ALERT',
+ REMOVE_ALERT = 'REMOVE_ALERT',
+}
+
+export enum CategoriesActionsTypes {
+ CATEGORIES_LOADING = 'CATEGORIES_LOADING',
  //  ----------------------------------------------- CATEGORIES
  CATEGORIES_FETCH_SUCCESS = 'CATEGORIES_FETCH_SUCCESS',
  CATEGORIES_FETCH_FAILED = 'CATEGORIES_FETCH_FAILED',
  //  ----------------------------------------------- CATEGORY
  CATEGORY_FETCH_SUCCESS = 'CATEGORY_FETCH_SUCCESS',
  CATEGORY_FETCH_FAILED = 'CATEGORY_FETCH_FAILED',
- //  -----------------------------------------------
-}
-
-export enum AlertActionsTypes {
- SET_ALERT = 'SET_ALERT',
- REMOVE_ALERT = 'REMOVE_ALERT',
+ CATEGORY_SELECT = 'CATEGORY_SELECT',
 }

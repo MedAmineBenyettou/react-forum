@@ -1,7 +1,6 @@
 import React from 'react';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { useAlert } from '../../contexts/Alert/AlertContext';
-import $ from 'jquery';
 import '../../css/Alert/Alert.css';
 
 export const Alert = () => {

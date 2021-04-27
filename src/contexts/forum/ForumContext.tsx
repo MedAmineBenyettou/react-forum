@@ -3,7 +3,7 @@ import { forumReducer } from './ForumReducer';
 import { ForumActionsTypes } from '../types';
 import { IforumApiFunctions } from '../../lib/Forum';
 import { IUser } from '../../lib/User';
-import { ICategory } from '../../lib/Category';
+import { IContextError } from '../_common';
 
 export type ForumAction = {
  type: ForumActionsTypes;
@@ -12,21 +12,30 @@ export type ForumAction = {
 export type ForumDispatch = (action: ForumAction) => void;
 type ForumProviderProps = { children: ReactNode };
 
+export enum ICategoriesContainerState {
+ ALL = 'ALL',
+ TOP = 'TOP',
+ LATEST = 'LATEST',
+ LOGIN = 'LOGIN',
+}
+
 //--------------------------------------    STATE   ---------------------------------
 export type ForumState = {
  loading: boolean;
+ error: IContextError | null;
  apiFunctions: IforumApiFunctions;
  user: {
   isAuthenticated: boolean;
   userDetails: IUser | null;
  };
- categories: ICategory[];
+ categoriesContainerState: ICategoriesContainerState;
 };
 const initialState: ForumState = {
- loading: true,
+ loading: false,
+ error: null,
  apiFunctions: {},
- categories: [],
  user: { isAuthenticated: false, userDetails: null },
+ categoriesContainerState: ICategoriesContainerState.ALL,
 };
 //-----------------------------------------------------------------------------------
 const ForumContext = createContext<

@@ -4,6 +4,11 @@ import { IUser } from './User';
 
 type notDefined = undefined | null;
 
+interface IAuth {
+ user: IUser;
+ token: string;
+}
+
 export interface IforumProps {
  apiFunctions: IforumApiFunctions;
 }
@@ -33,8 +38,8 @@ export interface IforumApiFunctions {
  deleteUser?: (...args: any[]) => Promise<any[]>;
  disableUser?: (...args: any[]) => Promise<any[]>;
 
- loginUser?: (loginData: IUserLoginData) => Promise<IUser>;
+ loginUser?: (loginData: IUserLoginData) => Promise<IAuth>;
  logoutUser?: () => Promise<boolean>;
 
- registerUser?: (registerData: IUserRegisterData) => Promise<IUser>;
+ registerUser?: (registerData: IUserRegisterData) => Promise<IAuth>;
 }

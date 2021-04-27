@@ -1,28 +1,29 @@
 import React, { useEffect } from 'react';
 import { Category } from './Category';
-import { ICategoriesContainerState } from '../ForumMain';
+import { useForum } from '../../contexts/forum/ForumContext';
+import { getAllCategories } from '../../contexts/Categories/actions/CategoriesActions';
+import { useCategories } from '../../contexts/Categories/CategoriesContext';
+import { Spinner } from '../Spinner/Spinner';
 
 import '../../css/Categories/Categories.css';
-import { useForum } from '../../contexts/forum/ForumContext';
-import { getAllCategories } from '../../contexts/forum/Actions/categories';
 
-interface props {
- view: ICategoriesContainerState;
-}
-
-export const Categories: React.FC<props> = ({ view }) => {
+export const Categories = () => {
  const {
   dispatch,
   state: {
-   categories,
    apiFunctions,
    user: { isAuthenticated },
+   categoriesContainerState,
   },
  } = useForum();
+ const {
+  dispatchCategories,
+  categoriesState: { categoriesList, loading },
+ } = useCategories();
 
  useEffect(() => {
   const handleTabs = () => {
-   switch (view) {
+   switch (categoriesContainerState) {
     case 'ALL':
      break;
     case 'LATEST':
@@ -32,17 +33,27 @@ export const Categories: React.FC<props> = ({ view }) => {
     case 'LOGIN':
      break;
     default:
-     throw new Error("Couldn't handle the view: " + view);
+     throw new Error("Couldn't handle the view: " + categoriesContainerState);
    }
   };
-  if (isAuthenticated) getAllCategories({ dispatch, apiFunctions });
- }, [isAuthenticated, apiFunctions, dispatch]);
+  handleTabs();
+  if (isAuthenticated)
+   getAllCategories({ dispatch, apiFunctions }, { dispatchCategories });
+ }, [
+  isAuthenticated,
+  apiFunctions,
+  dispatch,
+  dispatchCategories,
+  categoriesContainerState,
+ ]);
 
  return (
   <div className="Categories">
-   {categories.map((c) => (
-    <Category key={c.id} {...c} />
-   ))}
+   {loading ? (
+    <Spinner />
+   ) : (
+    categoriesList.map((c) => <Category key={c.id} {...c} />)
+   )}
   </div>
  );
 };

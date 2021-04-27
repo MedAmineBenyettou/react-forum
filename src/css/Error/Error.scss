@@ -1,0 +1,19 @@
+@import '../Common';
+
+.forum-error {
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+ justify-content: center;
+ flex-wrap: nowrap;
+ color: $secondary-color;
+ $p: 5%;
+ padding-top: $p;
+ padding-bottom: $p;
+ font-size: x-large;
+ .icon {
+  $s: 7rem;
+  width: $s;
+  user-select: none;
+ }
+}
