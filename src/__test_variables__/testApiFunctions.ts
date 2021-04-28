@@ -15,4 +15,9 @@ export const testApiFunctions: IforumApiFunctions = {
    method: 'GET',
   }).then(async (r) => await r.json());
  },
+ getCategory: async (id: string) => {
+  return await fetch(`/categories/${id}`, {
+   method: 'GET',
+  }).then(async (r) => await r.json());
+ },
 };

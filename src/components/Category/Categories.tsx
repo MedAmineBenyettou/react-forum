@@ -14,6 +14,7 @@ export const Categories = () => {
    apiFunctions,
    user: { isAuthenticated },
    categoriesContainerState,
+   isReady,
   },
  } = useForum();
  const {
@@ -33,18 +34,23 @@ export const Categories = () => {
     case 'LOGIN':
      break;
     default:
-     throw new Error("Couldn't handle the view: " + categoriesContainerState);
+     console.error(
+      new Error("Couldn't handle the view: " + categoriesContainerState)
+     );
    }
   };
   handleTabs();
-  if (isAuthenticated)
+  if (isAuthenticated && !loading && isReady) {
    getAllCategories({ dispatch, apiFunctions }, { dispatchCategories });
+  }
  }, [
   isAuthenticated,
   apiFunctions,
   dispatch,
   dispatchCategories,
   categoriesContainerState,
+  loading,
+  isReady,
  ]);
 
  return (

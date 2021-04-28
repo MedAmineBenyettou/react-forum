@@ -16,6 +16,7 @@ export const Navbar = () => {
  const {
   state: {
    user: { isAuthenticated },
+   categoriesContainerState,
   },
   dispatch,
  } = useForum();
@@ -33,7 +34,7 @@ export const Navbar = () => {
 
  const handleChangeTab = (type: ICategoriesContainerState) => {
   history.replace('/');
-  setCategoriesState({ dispatch }, type);
+  setCategoriesState({ dispatch, categoriesContainerState }, type);
  };
 
  useEffect(() => {
@@ -56,7 +57,7 @@ export const Navbar = () => {
    {/* LINKS */}
    <ul id="forum-tabs" className="tabs col s12">
     <li
-     id="All_tab"
+     id={`${ICategoriesContainerState.ALL}_tab`}
      onClick={() => handleChangeTab(ICategoriesContainerState.ALL)}
      className="tab col s1"
     >
@@ -65,14 +66,14 @@ export const Navbar = () => {
      </Link>
     </li>
     <li
-     id="Top_tab"
+     id={`${ICategoriesContainerState.TOP}_tab`}
      onClick={() => handleChangeTab(ICategoriesContainerState.TOP)}
      className="tab col s1"
     >
      <Link to="/">Top</Link>
     </li>
     <li
-     id="Latest_tab"
+     id={`${ICategoriesContainerState.LATEST}_tab`}
      onClick={() => handleChangeTab(ICategoriesContainerState.LATEST)}
      className="tab col s1"
     >
@@ -80,7 +81,7 @@ export const Navbar = () => {
     </li>
     {!isAuthenticated && (
      <li
-      id="Login_tab"
+      id={`${ICategoriesContainerState.LATEST}_tab`}
       onClick={() => handleChangeTab(ICategoriesContainerState.LOGIN)}
       className="tab col s1 right"
      >

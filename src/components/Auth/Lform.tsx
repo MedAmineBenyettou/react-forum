@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
-import mail from '../../images/mail.png';
+import person from '../../images/person.png';
 import lock from '../../images/lock.png';
 import { loginUser } from '../../contexts/forum/Actions/auth';
-import { useForum } from '../../contexts/forum/ForumContext';
+import {
+ ICategoriesContainerState,
+ useForum,
+} from '../../contexts/forum/ForumContext';
 import { AlertType, useAlert } from '../../contexts/Alert/AlertContext';
 import { setAlert } from '../../contexts/Alert/Actions/alertActions';
+import { setCategoriesState } from '../../contexts/forum/Actions/forum';
 
 export const Lform: React.FC<{ changeForm: () => void }> = ({ changeForm }) => {
  const {
   dispatch,
-  state: { apiFunctions },
+  state: { apiFunctions, categoriesContainerState },
  } = useForum();
 
  const { dispatchAlert } = useAlert();
@@ -23,6 +27,10 @@ export const Lform: React.FC<{ changeForm: () => void }> = ({ changeForm }) => {
     msg: 'Login was successful!',
     alertType: AlertType.SUCCESS,
    });
+   setCategoriesState(
+    { dispatch, categoriesContainerState },
+    ICategoriesContainerState.ALL
+   );
   } else {
    setAlert({
     dispatchAlert,
@@ -58,7 +66,7 @@ export const Lform: React.FC<{ changeForm: () => void }> = ({ changeForm }) => {
         required
        />
        <div className="prefix">
-        <img src={mail} alt="mail" />
+        <img src={person} alt="mail" />
        </div>
       </div>
       <div id="lPassword" className="input-field col s11">

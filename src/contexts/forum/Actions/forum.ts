@@ -1,6 +1,7 @@
 import { ForumDispatch, ICategoriesContainerState } from '../ForumContext';
 import { ForumActionsTypes } from '../../types';
 import { IUseForum } from '../../_common';
+import M from 'materialize-css';
 
 export function loadingForum(dispatch: ForumDispatch) {
  dispatch({ type: ForumActionsTypes.FORUM_LOADING });
@@ -13,11 +14,25 @@ export function initForum({ dispatch, apiFunctions }: IUseForum) {
 }
 
 export function setCategoriesState(
- { dispatch }: { dispatch: ForumDispatch },
+ {
+  dispatch,
+  categoriesContainerState,
+ }: {
+  dispatch: ForumDispatch;
+  categoriesContainerState: ICategoriesContainerState;
+ },
  type: ICategoriesContainerState
 ) {
- dispatch({
-  type: ForumActionsTypes.FORUM_CATEGORIES_STATE_CHANGE,
-  payload: type,
- });
+ if (!categoriesContainerState.match(type)) {
+  dispatch({
+   type: ForumActionsTypes.FORUM_CATEGORIES_STATE_CHANGE,
+   payload: type,
+  });
+  var el = document.getElementById('forum-tabs');
+  if (el) {
+   var inst = M.Tabs.getInstance(el);
+   inst.select(`${type}_tab`);
+   inst.updateTabIndicator();
+  }
+ }
 }

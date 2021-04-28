@@ -15,6 +15,7 @@ export function forumReducer(
    return {
     ...state,
     apiFunctions: payload as IforumApiFunctions,
+    isReady: true,
    };
   case ForumActionsTypes.FORUM_CATEGORIES_STATE_CHANGE:
    return {

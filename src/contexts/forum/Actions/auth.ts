@@ -16,6 +16,7 @@ export async function loginUser(
      type: ForumActionsTypes.USER_LOGIN_SUCCESS,
      payload: { user, token },
     });
+    return user;
    } else {
     dispatch({ type: ForumActionsTypes.USER_LOGIN_FAILED });
    }
@@ -61,6 +62,7 @@ export async function registerUser(
      type: ForumActionsTypes.USER_REGISTER_SUCCESS,
      payload: { user, token },
     });
+    return user;
    } else {
     dispatch({ type: ForumActionsTypes.USER_REGISTER_FAILED });
    }

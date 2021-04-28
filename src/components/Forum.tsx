@@ -4,9 +4,9 @@ import { ForumMain } from './ForumMain';
 import { IforumProps } from '../lib/Forum';
 import { Alert } from './Alert/Alert';
 import { AlertProvider } from '../contexts/Alert/AlertContext';
+import { CategoriesProvider } from '../contexts/Categories/CategoriesContext';
 
 import '../css/Forum.css';
-import { CategoriesProvider } from '../contexts/Categories/CategoriesContext';
 
 function Forum(props: IforumProps) {
  return (

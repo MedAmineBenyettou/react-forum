@@ -9,11 +9,14 @@ import { Navbar } from './Navbar/Navbar';
 import { PrivateRoute } from './Routing/PrivateRoute';
 
 export const ForumMain: React.FC<IforumProps> = ({ apiFunctions }) => {
- const { dispatch } = useForum();
+ const {
+  dispatch,
+  state: { isReady },
+ } = useForum();
 
  useEffect(() => {
-  initForum({ dispatch, apiFunctions });
- }, [dispatch, apiFunctions]);
+  if (!isReady) initForum({ dispatch, apiFunctions });
+ }, [dispatch, apiFunctions, isReady]);
 
  return (
   <Router>

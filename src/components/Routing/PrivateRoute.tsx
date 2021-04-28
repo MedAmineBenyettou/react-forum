@@ -21,26 +21,42 @@ export const PrivateRoute: React.FC<props> = ({
   state: {
    loading,
    user: { isAuthenticated },
+   isReady,
+   categoriesContainerState,
   },
   dispatch,
  } = useForum();
  const { dispatchAlert } = useAlert();
  useEffect(() => {
-  if (!(localStorage.getItem('forumToken') || (!loading && isAuthenticated))) {
+  if (
+   !(
+    localStorage.getItem('forumToken') ||
+    (!loading && isAuthenticated && isReady)
+   )
+  ) {
    setAlert({
     dispatchAlert,
     alertType: AlertType.DANGER,
     msg: 'You need to login to view this page.',
    });
-   setCategoriesState({ dispatch }, ICategoriesContainerState.LOGIN);
+   setCategoriesState(
+    { dispatch, categoriesContainerState },
+    ICategoriesContainerState.LOGIN
+   );
   }
- }, [loading, isAuthenticated, dispatchAlert, dispatch]);
+ }, [
+  loading,
+  isAuthenticated,
+  dispatchAlert,
+  dispatch,
+  categoriesContainerState,
+  isReady,
+ ]);
  return (
   <Route
    {...rest}
    render={(props) => {
-    if (localStorage.getItem('forumToken') || (!loading && isAuthenticated))
-     return <Component {...props} />;
+    if (!loading && isAuthenticated && isReady) return <Component {...props} />;
     else {
      return <Redirect to="/" />;
     }

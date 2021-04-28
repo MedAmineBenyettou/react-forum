@@ -1,17 +1,22 @@
 import React, { useState } from 'react';
 import person from '../../images/person.png';
-// import { register } from '../../actions/auth';
 import mail from '../../images/mail.png';
 import lock from '../../images/lock.png';
 import { registerUser } from '../../contexts/forum/Actions/auth';
-import { useForum } from '../../contexts/forum/ForumContext';
-// import { setAlert } from '../../actions/alert';
+import {
+ ICategoriesContainerState,
+ useForum,
+} from '../../contexts/forum/ForumContext';
+import { AlertType, useAlert } from '../../contexts/Alert/AlertContext';
+import { setAlert } from '../../contexts/Alert/Actions/alertActions';
 
 export const Rform: React.FC<{ changeForm: () => void }> = ({ changeForm }) => {
  const {
   dispatch,
-  state: { apiFunctions },
+  state: { apiFunctions, categoriesContainerState },
  } = useForum();
+
+ const { dispatchAlert } = useAlert();
 
  const [formData, setData] = useState({
   username: '',
@@ -21,18 +26,30 @@ export const Rform: React.FC<{ changeForm: () => void }> = ({ changeForm }) => {
  });
 
  const { username, email, password, password2 } = formData;
- const onSubmit = (e: any) => {
+ const onSubmit = async (e: any) => {
   e.preventDefault();
   if (password.length >= 6 && password2.length >= 6) {
    if (password === password2) {
     formData.email = formData.email.trim().toLowerCase();
     formData.username = formData.username.trim();
-    registerUser({ dispatch, apiFunctions }, formData);
+    await registerUser({ dispatch, apiFunctions }, formData);
+    setCategoriesState(
+     { dispatch, categoriesContainerState },
+     ICategoriesContainerState.ALL
+    );
    } else {
-    // setAlert('40009', 'danger');
+    setAlert({
+     dispatchAlert,
+     alertType: AlertType.WARNING,
+     msg: "Passwords don't match",
+    });
    }
   } else {
-   //    setAlert('40008', 'danger');
+   setAlert({
+    dispatchAlert,
+    alertType: AlertType.WARNING,
+    msg: "Passwords' length must at least be 6",
+   });
   }
  };
 
@@ -136,3 +153,12 @@ export const Rform: React.FC<{ changeForm: () => void }> = ({ changeForm }) => {
   </>
  );
 };
+function setCategoriesState(
+ arg0: {
+  dispatch: import('../../contexts/forum/ForumContext').ForumDispatch;
+  categoriesContainerState: any;
+ },
+ ALL: any
+) {
+ throw new Error('Function not implemented.');
+}

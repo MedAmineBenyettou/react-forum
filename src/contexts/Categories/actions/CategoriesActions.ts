@@ -57,7 +57,7 @@ export async function getCategory(
   }
  } else {
   throw new Error(
-   'getAllCategories is not defined by the user. Please add it to the apiFunctions property in the Forum component'
+   'getCategory is not defined by the user. Please add it to the apiFunctions property in the Forum component'
   );
  }
 }

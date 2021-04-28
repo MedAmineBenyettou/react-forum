@@ -21,20 +21,21 @@ export const CategoryPage = ({
   categoriesState: { loading, error, selectedCategory },
  } = useCategories();
  const {
-  state: { apiFunctions },
+  state: { apiFunctions, isReady },
  } = useForum();
  useEffect(() => {
-  console.log(selectedCategory);
-  console.log(categoryId);
-  console.log(selectedCategory && !selectedCategory.id.match(categoryId));
-  if (selectedCategory && !selectedCategory.id.match(categoryId)) {
-   console.log('calling');
+  if (
+   isReady &&
+   (!selectedCategory ||
+    (selectedCategory &&
+     !String(selectedCategory.id).match(String(categoryId))))
+  ) {
    getAndSelectCategory({ apiFunctions }, { dispatchCategories }, categoryId);
   }
- }, [categoryId, selectedCategory, apiFunctions, dispatchCategories]);
+ }, [categoryId, selectedCategory, apiFunctions, dispatchCategories, isReady]);
  return (
   <div className="categoryPage">
-   {loading ? (
+   {loading || !selectedCategory ? (
     <Spinner />
    ) : error ? (
     <Error msg={error.msg} />

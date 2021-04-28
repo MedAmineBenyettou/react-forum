@@ -29,6 +29,7 @@ export type ForumState = {
   userDetails: IUser | null;
  };
  categoriesContainerState: ICategoriesContainerState;
+ isReady: boolean;
 };
 const initialState: ForumState = {
  loading: false,
@@ -36,6 +37,7 @@ const initialState: ForumState = {
  apiFunctions: {},
  user: { isAuthenticated: false, userDetails: null },
  categoriesContainerState: ICategoriesContainerState.ALL,
+ isReady: false,
 };
 //-----------------------------------------------------------------------------------
 const ForumContext = createContext<
