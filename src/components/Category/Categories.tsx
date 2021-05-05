@@ -34,9 +34,7 @@ export const Categories = () => {
     case 'LOGIN':
      break;
     default:
-     console.error(
-      new Error("Couldn't handle the view: " + categoriesContainerState)
-     );
+     throw new Error("Couldn't handle the view: " + categoriesContainerState);
    }
   };
   handleTabs();
