@@ -6,7 +6,7 @@ import { IContextError } from '../_common';
 
 export type CategoriesAction = {
  type: CategoriesActionsTypes;
- payload?: ICategory | ICategory[] | IContextError | string;
+ payload?: ICategory | ICategory[] | IContextError | string | null;
 };
 export type CategoriesDispatch = (action: CategoriesAction) => void;
 type CategoriesProviderProps = { children: ReactNode };

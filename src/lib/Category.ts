@@ -4,6 +4,6 @@ export interface ICategory {
  id: string;
  name: string;
  description: string;
- categories?: ICategory[];
+ parentId: string | null;
  topics?: ITopic[];
 }

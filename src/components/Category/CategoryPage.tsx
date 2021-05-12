@@ -1,10 +1,15 @@
 import React, { useEffect } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import { getAndSelectCategory } from '../../contexts/Categories/actions/CategoriesActions';
+import {
+ getAndSelectCategory,
+ selectCategory,
+} from '../../contexts/Categories/actions/CategoriesActions';
 import { useCategories } from '../../contexts/Categories/CategoriesContext';
 import { useForum } from '../../contexts/forum/ForumContext';
 import { Error } from '../Error/Error';
 import { Spinner } from '../Spinner/Spinner';
+
+import '../../css/Categories/CategoryPage.css';
 
 interface RouterProps {
  categoryId: string;
@@ -33,6 +38,13 @@ export const CategoryPage = ({
    getAndSelectCategory({ apiFunctions }, { dispatchCategories }, categoryId);
   }
  }, [categoryId, selectedCategory, apiFunctions, dispatchCategories, isReady]);
+
+ useEffect(() => {
+  return () => {
+   selectCategory({ dispatchCategories }, null);
+  };
+ }, [dispatchCategories]);
+
  return (
   <div className="categoryPage">
    {loading || !selectedCategory ? (

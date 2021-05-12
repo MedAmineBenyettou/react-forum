@@ -4,6 +4,7 @@ import { initForum } from '../contexts/forum/Actions/forum';
 import { useForum } from '../contexts/forum/ForumContext';
 import { IforumProps } from '../lib/Forum';
 import { CategoryPage } from './Category/CategoryPage';
+import { Error } from './Error/Error';
 import { ForumContainer } from './ForumContainer';
 import { Navbar } from './Navbar/Navbar';
 import { PrivateRoute } from './Routing/PrivateRoute';
@@ -25,7 +26,10 @@ export const ForumMain: React.FC<IforumProps> = ({ apiFunctions }) => {
     <div className="Forum">
      <Switch>
       <Route exact path="/" component={ForumContainer} />
-      <PrivateRoute path="/category/:categoryId" component={CategoryPage} />
+      <PrivateRoute path="/categories/:categoryId" component={CategoryPage} />
+      <Route
+       render={(props) => <Error {...props} msg={'404 Page not found'} />}
+      />
      </Switch>
     </div>
    </div>

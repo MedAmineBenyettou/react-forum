@@ -2,8 +2,6 @@ import { IUserLoginData, IUserRegisterData } from './Auth';
 import { ICategory } from './Category';
 import { IUser } from './User';
 
-type notDefined = undefined | null;
-
 interface IAuth {
  user: IUser;
  token: string;
@@ -15,8 +13,8 @@ export interface IforumProps {
 
 export interface IforumApiFunctions {
  // TODO FIX
- getAllCategories?: () => Promise<ICategory[] | notDefined>;
- getCategory?: (id: string) => Promise<ICategory | notDefined>;
+ getAllCategories?: () => Promise<ICategory[] | undefined | null>;
+ getCategory?: (id: string) => Promise<ICategory | undefined | null>;
 
  getAllTopicsFrom_CategoryId?: (...args: any[]) => Promise<any[]>;
  getTopicFrom_CategoryId?: (...args: any[]) => Promise<any[]>;

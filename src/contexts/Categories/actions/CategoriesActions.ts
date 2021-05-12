@@ -1,3 +1,4 @@
+import { ICategory } from '../../../lib/Category';
 import { CategoriesActionsTypes } from '../../types';
 import { IUseCategories, IUseForum } from '../../_common';
 
@@ -20,7 +21,7 @@ export async function getAllCategories(
    return cats;
   } catch (err) {
    dispatchCategories({ type: CategoriesActionsTypes.CATEGORIES_FETCH_FAILED });
-   throw new Error('Auth Error while loging In.\n' + err);
+   console.error(new Error('Auth Error while loging In.\n' + err));
   }
  } else {
   throw new Error(
@@ -62,6 +63,36 @@ export async function getCategory(
  }
 }
 
+export async function getParentCategory(
+ { apiFunctions }: IUseForum,
+ { dispatchCategories, categoriesState }: IUseCategories,
+ id: string
+) {
+ if (apiFunctions.getCategory !== undefined) {
+  var cat = categoriesState?.categoriesList.find((c) =>
+   String(c.id).match(String(id))
+  );
+  if (cat) return cat;
+  else {
+   return await getCategory({ apiFunctions }, { dispatchCategories }, id);
+  }
+ } else {
+  throw new Error(
+   'getCategory is not defined by the user, and it is needed for the getParentCategory function. Please add it to the apiFunctions property in the Forum component'
+  );
+ }
+}
+
+export function selectCategory(
+ { dispatchCategories }: IUseCategories,
+ category: ICategory | null
+) {
+ dispatchCategories({
+  type: CategoriesActionsTypes.CATEGORY_SELECT,
+  payload: category,
+ });
+}
+
 export async function getAndSelectCategory(
  { apiFunctions }: IUseForum,
  { dispatchCategories }: IUseCategories,
@@ -77,11 +108,13 @@ export async function getAndSelectCategory(
    return cat;
   }
  } catch (err) {
-  throw new Error(
-   'Error while selecting & getting the category with the id: ' +
-    id +
-    '.\n' +
-    err
+  console.error(
+   new Error(
+    'Error while selecting & getting the category with the id: ' +
+     id +
+     '.\n' +
+     err
+   )
   );
  }
 }

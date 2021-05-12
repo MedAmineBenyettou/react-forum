@@ -1,10 +1,14 @@
 @import '../Common';
 
 .forum-category {
+ $subColor: rgba(
+  $color: $mygray4,
+  $alpha: 0.8,
+ );
  border: 1px solid $mygray2;
  border-radius: 8px;
- background-color: rgba($color: $primary-color, $alpha: 0.65);
- //  background-color: $mygray;
+ //  background-color: rgba($color: $primary-color, $alpha: 0.65);
+ background-color: $bg-light;
  width: 49.5%;
  height: fit-content;
  padding: 0.5rem 0;
@@ -18,10 +22,11 @@
    .title {
     font-size: larger;
     font-weight: bold;
+    color: white;
    }
    .info {
     font-family: $font2;
-    color: rgba($color: $mygray4, $alpha: 0.8);
+    color: $subColor;
     font-weight: lighter !important;
    }
   }
@@ -34,6 +39,8 @@
   }
  }
  .sub-cats {
+  position: relative;
+  z-index: 500;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -48,12 +55,19 @@
    width: fit-content;
    .sub-cat-title {
     min-width: fit-content;
+    color: white;
    }
    img {
     $size: 26px;
     height: $size;
    }
+   &:hover .sub-cat-title {
+    text-decoration: underline !important;
+   }
   }
+ }
+ &:hover {
+  background-color: $bg-light-hover;
  }
 }
 

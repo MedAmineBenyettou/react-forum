@@ -19,7 +19,7 @@ export const Categories = () => {
  } = useForum();
  const {
   dispatchCategories,
-  categoriesState: { categoriesList, loading },
+  categoriesState: { categoriesList, loading, selectedCategory },
  } = useCategories();
 
  useEffect(() => {
@@ -56,7 +56,18 @@ export const Categories = () => {
    {loading ? (
     <Spinner />
    ) : (
-    categoriesList.map((c) => <Category key={c.id} {...c} />)
+    categoriesList.map((c) =>
+     (!selectedCategory && !c.parentId) ||
+     (selectedCategory && String(selectedCategory.id).match(String(c.id))) ? (
+      <Category
+       key={c.id}
+       {...c}
+       categories={categoriesList.filter((c1) =>
+        String(c1.parentId).match(c.id)
+       )}
+      />
+     ) : null
+    )
    )}
   </div>
  );

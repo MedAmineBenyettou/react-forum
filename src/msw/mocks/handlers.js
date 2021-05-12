@@ -16,40 +16,41 @@ const cats = [
  {
   id: 1,
   name: 'General',
+  parentId: null,
   description: 'General stuff',
-  categories: [
-   {
-    id: 3,
-    name: 'WoT',
-    description: 'World of Tanks stuff',
-    categories: [],
-   },
-   {
-    id: 4,
-    name: 'WoWs',
-    description: 'World of Warships stuff',
-    categories: [],
-   },
-  ],
+ },
+ {
+  id: 3,
+  name: 'WoT',
+  description: 'World of Tanks stuff',
+  parentId: 1,
+  categories: [],
+ },
+ {
+  id: 4,
+  name: 'WoWs',
+  description: 'World of Warships stuff',
+  parentId: 1,
+  categories: [],
  },
  {
   id: 2,
   name: 'Replays',
   description: 'Post your replays here!',
-  categories: [],
+  parentId: null,
  },
  {
   id: 5,
   name: 'Recruiting',
   description: 'Invite players here!',
-  categories: [
-   {
-    id: 6,
-    name: 'New members',
-    description: 'A place for new members',
-    categories: [],
-   },
-  ],
+  parentId: null,
+ },
+ {
+  id: 6,
+  name: 'New members',
+  description: 'A place for new members',
+  parentId: 5,
+  categories: [],
  },
 ];
 

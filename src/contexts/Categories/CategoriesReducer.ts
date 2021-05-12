@@ -25,11 +25,11 @@ export function CategoriesReducer(
 
   //?============    CATEGORY      ==============================
   case CategoriesActionsTypes.CATEGORY_FETCH_SUCCESS:
-   const cat = state.categoriesList.findIndex((c) => {
-    return String(c.id).match(String((payload as ICategory).id));
-   });
-   if (cat !== -1) state.categoriesList[cat] = payload as ICategory;
-   else state.categoriesList.push(payload as ICategory);
+   const cat = state.categoriesList.findIndex((c) =>
+    String(c.id).match(String((payload as ICategory).id))
+   );
+   if (cat < 0) state.categoriesList.push(payload as ICategory);
+   else state.categoriesList[cat] = payload as ICategory;
    return {
     ...state,
     loading: false,
